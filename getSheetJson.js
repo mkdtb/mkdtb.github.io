@@ -13,17 +13,16 @@ function getJsonp_GAS()
 {
     $.ajax({
         type: 'GET',
-        url: 'https://script.google.com/macros/s/AKfycbwRqnGQpYbA27pMzrBSDzNcuypqw8MDtIesPt8E8ID_CkFWD6cN/exec',
+        url: 'https://script.google.com/macros/s/AKfycbzGK0Bdn4zSfZ1mzTjMMEVSfxvB7WIyiWGKZWCBbyRo6IuZ2NTj/exec',
         dataType: 'jsonp',
         jsonpCallback: 'jsondata',
         success: function(json) {
-            var index = 0;
-            var player1_name = json[index++].value;
-            var player2_name = json[index++].value;
-            var player1_fontSize = json[index++].value;
-            var player1_fontColor = json[index++].value;
-            var player2_fontSize = json[index++].value;
-            var player2_fontColor = json[index++].value;
+            var player1_name = json[0].player_name;
+            var player1_fontSize = json[0].fontSize;
+            var player1_fontColor = json[0].fontColor;
+            var player2_name = json[1].player_name;
+            var player2_fontSize = json[1].fontSize;
+            var player2_fontColor = json[1].fontColor;
             if (selectPlayer == "1p")
             {
                 insertHTML(player1_name, player1_fontColor, player1_fontSize);
