@@ -13,7 +13,7 @@ function getJsonp_GAS()
 {
     $.ajax({
         type: 'GET',
-        url: 'https://script.google.com/macros/s/AKfycbzGK0Bdn4zSfZ1mzTjMMEVSfxvB7WIyiWGKZWCBbyRo6IuZ2NTj/exec',
+        url: 'https://script.google.com/macros/s/AKfycbxK4VCS7w0VxCg5nv5CTOLvO5sbUCKuJdixiu1iA2Pv_2DXyH-o/exec',
         dataType: 'jsonp',
         jsonpCallback: 'jsondata',
         success: function(json) {
