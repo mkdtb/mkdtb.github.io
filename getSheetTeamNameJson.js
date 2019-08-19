@@ -23,10 +23,10 @@ function getJsonp_GAS()
             var team2_name = json[3].teamName;
             var team2_fontSize = json[3].teamNameFontSize;
             var team2_fontColor = json[3].teamNamefontColor;
-            if (selectPlayer == "1p")
+            if (selectTeam == "1p")
             {
                 insertHTML(team1_name, team1_fontColor, team1_fontSize);
-            } else if (selectPlayer == "2p") {
+            } else if (selectTeam == "2p") {
                 insertHTML(team2_name, team2_fontColor, team2_fontSize);
             } else {
                 insertHTML("", 0 , 0);
