@@ -6,7 +6,7 @@ window.onload = function()
 
 function main()
 {
-    setInterval("getJsonp_GAS()", 1000);
+    setInterval("getJsonp_GAS()", 1500);
 }
  
 function getJsonp_GAS()
@@ -17,27 +17,58 @@ function getJsonp_GAS()
         dataType: 'jsonp',
         jsonpCallback: 'jsondata',
         success: function(json) {
-            var team1_name = json[2].teamName;
-            var team1_fontSize = json[2].teamNameFontSize;
-            var team1_fontColor = json[2].teamNamefontColor;
-            var team2_name = json[3].teamName;
-            var team2_fontSize = json[3].teamNameFontSize;
-            var team2_fontColor = json[3].teamNamefontColor;
+            var team_index;
             if (selectTeam == "1p")
             {
-                insertHTML(team1_name, team1_fontColor, team1_fontSize);
+                team_index = 2;
             } else if (selectTeam == "2p") {
-                insertHTML(team2_name, team2_fontColor, team2_fontSize);
-            } else {
-                insertHTML("", 0 , 0);
+                team_index = 3;
             }
+
+            // チーム名
+            var team_name = json[team_index].teamName;
+            var team_fontSize = json[team_index].teamNameFontSize;
+            var team_fontColor = json[team_index].teamNamefontColor;
+            insertHTML("team_name_text", team_name, team_fontColor, team_fontSize);
+            
+            // チームメンバー
+            var team_memberFontSize = json[team_index].teamMemberFontSize;
+            var team_memberDatas = json[team_index].teamMemberDatas;
+            var $displayBox = $('#teamMemberInfoBox');
+            var addItemList = [];
+            team_memberDatas.forEach(function(elem) {
+                var $displayItem = $('<p/>', {
+                    align : "center"
+                })
+                $displayItem.append ($('<font/>', {
+                    face : "Noto Sans JP",
+                    color : "#FFFFFF",
+                    text : elem.playerName,
+                    size : team_memberFontSize
+                }))
+                if (elem.isPlayerLose) {
+                    $displayItem.append ($('<font/>', {
+                        face : "Noto Sans JP",
+                        color : "#FF0000",
+                        text : "X",
+                        size : 4
+                    }))
+                }
+                addItemList.push($displayItem)
+            });
+            $displayBox.empty();
+            $displayBox.append(addItemList);
+            
+            // 残り
+            var team_remaining = json[team_index].remaining;
+            insertHTML("team_remaining_text", team_remaining + "人", "#ffffff", 6);
         }
     });
 }
 
-function insertHTML(team_name, fontColor, fontSize)
+function insertHTML(elementId, text, fontColor, fontSize)
 {
-    document.getElementById('team_name_text').innerHTML = team_name;
-    document.getElementById('team_name_text').style.color = fontColor;
-    document.getElementById('team_name_text').size = String(fontSize);
+    document.getElementById(elementId).innerHTML = text;
+    document.getElementById(elementId).style.color = fontColor;
+    document.getElementById(elementId).size = String(fontSize);
 }
