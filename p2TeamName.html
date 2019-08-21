@@ -17,10 +17,41 @@
         {
             font-family: 'Noto Sans JP', sans-serif;
         }
+        div.teamMemberInfoBox p {
+            margin: 0.0em 0px;
+        }
+        div.teamRemain {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+        }
+        div.teamRemain p {
+            margin: 0.0em 0px;
+        }
     </style>
     <body bgcolor="#000000">
+        <!-- チーム名 -->
         <p align="center">
-            <font id="team_name_text" face="Noto Sans JP"/>
+            <font id="team_name_text" face="Noto Sans JP" color="#FFFFFF">
+            </font>
         </p>
+        <div id="teamMemberInfoBox" class="teamMemberInfoBox">
+            <!-- メンバー名 -->
+        </div>
+        <div class="teamRemain">
+            <p align="center">
+                <font face="Noto Sans JP" color="#FFFFFF" size="5">
+                    残り
+                </font>
+            </p>
+            <p align="center">
+                <font id="team_remaining_text" face="Noto Sans JP" color="#FFFFFF">
+                </font>
+            </p>
+        </div>
     </body>
+    
 </html>
