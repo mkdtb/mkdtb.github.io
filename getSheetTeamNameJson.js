@@ -61,7 +61,7 @@ function getJsonp_GAS()
             
             // 残り
             var team_remaining = json[team_index].remaining;
-            insertHTML("team_remaining_text", team_remaining + "人", "#ffffff", 6);
+            insertHTML("team_remaining_text", team_remaining + "人", "#ffffff", 7);
         }
     });
 }
