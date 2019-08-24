@@ -6,23 +6,23 @@ window.onload = function()
 
 function main()
 {
-    setInterval("getJsonp_GAS()", 1500);
+    setInterval("getJsonp_GAS()", 3000);
 }
  
 function getJsonp_GAS()
 {
     $.ajax({
         type: 'GET',
-        url: 'https://script.google.com/macros/s/AKfycbxK4VCS7w0VxCg5nv5CTOLvO5sbUCKuJdixiu1iA2Pv_2DXyH-o/exec',
+        url: 'https://script.google.com/macros/s/AKfycbxK4VCS7w0VxCg5nv5CTOLvO5sbUCKuJdixiu1iA2Pv_2DXyH-o/exec?param=TeamData',
         dataType: 'jsonp',
         jsonpCallback: 'jsondata',
         success: function(json) {
             var team_index;
             if (selectTeam == "1p")
             {
-                team_index = 2;
+                team_index = 0;
             } else if (selectTeam == "2p") {
-                team_index = 3;
+                team_index = 1;
             }
 
             // チーム名
@@ -61,7 +61,7 @@ function getJsonp_GAS()
             
             // 残り
             var team_remaining = json[team_index].remaining;
-            insertHTML("team_remaining_text", team_remaining + "人", "#ffffff", 7);
+            insertHTML("team_remaining_text", team_remaining + "人", "#FFFFFF", 7);
         }
     });
 }
