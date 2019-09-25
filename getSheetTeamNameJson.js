@@ -36,16 +36,19 @@ function getJsonp_GAS()
             var team_memberDatas = json[team_index].teamMemberDatas;
             var $displayBox = $('#teamMemberInfoBox');
             var addItemList = [];
+            var idIndex = 0;
+            var team_member_text_id = "team_member_text";
+            
             team_memberDatas.forEach(function(elem) {
                 var $displayItem = $('<p/>', {
                     align : "center"
                 })
+                
                 $displayItem.append ($('<font/>', {
-                    face : "Noto Sans JP",
-                    color : "#FFFFFF",
-                    text : elem.playerName,
-                    size : team_memberFontSize
+                    id : (team_member_text_id + idIndex).toString(),
+                    face : "Noto Sans JP"
                 }))
+
                 if (elem.isPlayerLose) {
                     $displayItem.append ($('<font/>', {
                         face : "Noto Sans JP",
@@ -54,10 +57,18 @@ function getJsonp_GAS()
                         size : 4
                     }))
                 }
+                
+                ++idIndex;
                 addItemList.push($displayItem)
             });
             $displayBox.empty();
             $displayBox.append(addItemList);
+            
+            idIndex = 0;
+            team_memberDatas.forEach(function(elem) {
+                insertHTML((team_member_text_id + idIndex).toString(), elem.playerName, "#FFFFFF", team_memberFontSize);
+                ++idIndex;
+            });
             
             // 残り
             var team_remaining = json[team_index].remaining;
