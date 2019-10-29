@@ -6,7 +6,7 @@ window.onload = function()
 
 function main()
 {
-    setInterval("getJsonp_GAS()", 5000);
+    setInterval("getJsonp_GAS()", 3000);
 }
 
 function getJsonp_GAS()
