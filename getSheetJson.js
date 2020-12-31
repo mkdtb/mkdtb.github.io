@@ -31,9 +31,9 @@ function getJsonp_GAS()
             var player_fontColor = json[player_index].fontColor;
             insertHTML(player_name, player_fontColor, player_fontSize);
             if (json[player_index].seesawCounter == -1) {
-                document.getElementById('seesaw_counter_text').innerHTML = json[player_index].seesawCounter;
-            } else {
                 document.getElementById('seesaw_counter_text').innerHTML = ""
+            } else {
+                document.getElementById('seesaw_counter_text').innerHTML = json[player_index].seesawCounter;
             }
         }
     });
